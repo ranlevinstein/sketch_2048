@@ -269,7 +269,6 @@ if (Math.max(Math.max(right, left),Math.max(up, down)) == down &&
 }
 
 */
-<<<<<<< HEAD
 if(Math.max(Math.max(right, left),Math.max(up, down)) == right){
   right();
   //println("right");
@@ -310,96 +309,6 @@ if (ableToMoveDown()){
 if(Math.max(Math.max(right, left),Math.max(up, down)) == right){
   right();
   //println("right");
-=======
-if(Math.max(Math.max(right, left),Math.max(up, down)) == right){
-  right();
-  //println("right");
-  return;
-}
-if(Math.max(Math.max(right, left),Math.max(up, down)) == left){
-  left();
-  //println("left");
-  return;
-}
-if(Math.max(Math.max(right, left),Math.max(up, down)) == up){
-  up();
-  //println("up");
-  return;
-}
-if(Math.max(Math.max(right, left),Math.max(up, down)) == down){
-  down();
-  //println("down");
-  return;
-}
-}
-/*
-void minMaxSumMove(){
-  float right = 0, left = 0, up = 0, down = 0;
-if (ableToMoveRight()){
-  right = AverageOfArray(getRight());
-}
-if (ableToMoveLeft()){
-  left = AverageOfArray(getLeft());
-}
-if (ableToMoveUp()){
-  up = AverageOfArray(getUp());
-}
-if (ableToMoveDown()){
-  down = AverageOfArray(getDown());
-}
-
-if(Math.max(Math.max(right, left),Math.max(up, down)) == right){
-  right();
-  //println("right");
-  return;
-}
-if(Math.max(Math.max(right, left),Math.max(up, down)) == left){
-  left();
-  //println("left");
-  return;
-}
-if(Math.max(Math.max(right, left),Math.max(up, down)) == up){
-  up();
-  //println("up");
-  return;
-}
-if(Math.max(Math.max(right, left),Math.max(up, down)) == down){
-  down();
-  //println("down");
-  return;
-}
-}
-}
-*/
-
-
-
-
-
-void future(){
-Board futureRight = board;
-Board futureLeft = board;
-Board futureUp = board;
-Board futureDown = board;
-
- for (int i = 0; i < 100; i++){
-   futureRight.minMaxMove();
-   futureLeft.minMaxMove();
-   futureUp.minMaxMove();
-   futureDown.minMaxMove();
- }
-int right = 0, left = 0, up = 0, down = 0;
-  right = amountOfZeroes(futureRight.getBoard());
-
-  left = amountOfZeroes(futureLeft.getBoard());
-
-  up = amountOfZeroes(futureUp.getBoard());
-
-  down = amountOfZeroes(futureDown.getBoard());
- if(Math.max(Math.max(right, left),Math.max(up, down)) == right){
-  right();
-  //println("right");
->>>>>>> FETCH_HEAD
   return;
 }
 if(Math.max(Math.max(right, left),Math.max(up, down)) == left){
@@ -444,6 +353,8 @@ futureDown.down();
 int right = 0, left = 0, up = 0, down = 0;
   right = amountOfZeroes(futureRight.getBoard());
 
+  //
+  
   left = amountOfZeroes(futureLeft.getBoard());
 
   up = amountOfZeroes(futureUp.getBoard());
@@ -471,4 +382,3 @@ if(Math.max(Math.max(right, left),Math.max(up, down)) == down){
 }
 }
 }
-
