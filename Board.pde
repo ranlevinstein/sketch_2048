@@ -13,25 +13,44 @@ public class Board{
     registerDraw(this);
 
  } 
+ 
  public int[][] getBoard(){
   return b; 
  }
+ 
+ public int maxNum()
+ {
+   int max = 0;
+   for(int i=0;i<b.length;i++)
+   {
+     for(int n=0;n<b.length;n++)
+     {
+       if(b[i][n]>max)
+       {
+         max=b[i][n];
+       }
+     }
+   }
+   return max;
+ }
+ 
   public boolean ableToMoveDown(){
- int[][] newb = go(1, 0, true);
+   int[][] newb = go(1, 0, true);
     if (newb != null) {
       return true;
     }
       return false;
-}
+  }
+  
   public boolean down(){
- int[][] newb = go(1, 0, true);
+  int[][] newb = go(1, 0, true);
     if (newb != null) {
       b = newb;
       spawn();
       return true;
     }
       return false;
-}
+  }
 public boolean ableToMoveRight(){
  int[][] newb = go(0, 1, true);
     if (newb != null) {
@@ -210,33 +229,33 @@ if (Math.max(Math.max(right, left),Math.max(up, down)) == right &&
       Math.max(Math.max(right, left),Math.max(up, down)) == up){
       if ((Math.random() < 0.5)){
         board.right();
-        println("right");
+        //println("right");
         return;  
       }else{
         board.up();
-        println("up");
+        //println("up");
         return;
       }
 
 }
 if(Math.max(Math.max(right, left),Math.max(up, down)) == right){
   board.right();
-  println("right");
+  //println("right");
   return;
 }
 if(Math.max(Math.max(right, left),Math.max(up, down)) == left){
   board.left();
-  println("left");
+  //println("left");
   return;
 }
 if(Math.max(Math.max(right, left),Math.max(up, down)) == up){
   board.up();
-  println("up");
+  //println("up");
   return;
 }
 if(Math.max(Math.max(right, left),Math.max(up, down)) == down){
   board.down();
-  println("down");
+  //println("down");
   return;
 }
 }
