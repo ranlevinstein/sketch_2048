@@ -7,7 +7,15 @@ public class Board{
     restart();
     spawn();
  } 
- 
+ Board(int[][] board){
+   restart();
+   b = board;
+    registerDraw(this);
+
+ } 
+ public int[][] getBoard(){
+  return b; 
+ }
   public boolean ableToMoveDown(){
  int[][] newb = go(1, 0, true);
     if (newb != null) {
@@ -30,6 +38,18 @@ public boolean ableToMoveRight(){
       return true;
     }
       return false;
+}
+public int[][] getRight(){
+  return go(0, 1, true);
+}
+public int[][] getLeft(){
+  return go(0, -1, true);
+}
+public int[][] getDown(){
+  return go(1, 0, true);
+}
+public int[][] getUp(){
+  return go(-1, 0, true);
 }
 public boolean right(){
  int[][] newb = go(0, 1, true);
@@ -91,7 +111,7 @@ public boolean gameover() {
   for (int i = 0 ; i < 4; i++) if (go(dy[i], dx[i], false) != null) out = false;
   return out;
 }
-int[][] go(int dy, int dx, boolean updatescore) {
+public int[][] go(int dy, int dx, boolean updatescore) {
   int[][] bak = new int[4][4];
   for (int j = 0 ; j < 4; j++) for (int i = 0 ; i < 4; i++) bak[j][i] = b[j][i];
   boolean moved = false; 
@@ -155,9 +175,69 @@ void rectt(float x, float y, float w, float h, float r, color c) { fill(c); rect
 void textt(String t, float x, float y, float w, float h, color c, float s, int align) {
   fill(c); textAlign(align); textSize(s); text(t,x,y,w,h);  }
   
-void restart() {
+public void restart() {
   b = new int[4][4];
   //spawn();
   score = dead = 0;
+}
+public int amountOfZeroes(int [][] a){
+  int amount = 0;
+for (int i = 0; i < a.length; i++){
+  for (int j = 0; j < a[i].length; j++){
+    if (a[i][j] == 0){
+      amount++;
+    }
+  }
+}
+return amount;
+}
+
+void minMaxMove(){
+  int right = 0, left = 0, up = 0, down = 0;
+if (board.ableToMoveRight()){
+  right = board.amountOfZeroes(board.getRight());
+}
+if (board.ableToMoveLeft()){
+  left = board.amountOfZeroes(board.getLeft());
+}
+if (board.ableToMoveUp()){
+  up = board.amountOfZeroes(board.getUp());
+}
+if (board.ableToMoveDown()){
+  down = board.amountOfZeroes(board.getDown());
+}
+if (Math.max(Math.max(right, left),Math.max(up, down)) == right &&
+      Math.max(Math.max(right, left),Math.max(up, down)) == up){
+      if ((Math.random() < 0.5)){
+        board.right();
+        println("right");
+        return;  
+      }else{
+        board.up();
+        println("up");
+        return;
+      }
+
+}
+if(Math.max(Math.max(right, left),Math.max(up, down)) == right){
+  board.right();
+  println("right");
+  return;
+}
+if(Math.max(Math.max(right, left),Math.max(up, down)) == left){
+  board.left();
+  println("left");
+  return;
+}
+if(Math.max(Math.max(right, left),Math.max(up, down)) == up){
+  board.up();
+  println("up");
+  return;
+}
+if(Math.max(Math.max(right, left),Math.max(up, down)) == down){
+  board.down();
+  println("down");
+  return;
+}
 }
 }
