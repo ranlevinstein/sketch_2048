@@ -5,11 +5,11 @@ board = new Board();
 size(500, 550); //size(len, len);
 textFont(createFont("Courier", 40));
 ////////////////////////////////////////
-/*
+
 while(!board.gameover()){
   
   board.minMaxMove();
-}*/
+}
 int start = millis();
 while(true){
 
@@ -18,7 +18,7 @@ if(board.maxNum()<wantedNum)
   board = new Board();
   while(!board.gameover()){
   
-  board.minMaxMove();
+  board.future();
 }
 println("Max num in board: " + board.maxNum());
 }
@@ -34,4 +34,8 @@ println("Eureka!!");
 print("took ");
 print((millis()-start)/1000);
 print(" seconds.");
+
+
+
+
 }
