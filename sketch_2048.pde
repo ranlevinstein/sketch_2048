@@ -15,7 +15,7 @@ while(!board.gameover()){
   board.minMaxMove();
 }
 
-int start = millis();
+start = millis();
 
 while(true){
 
@@ -57,4 +57,3 @@ print(" seconds.");
 
 
 
-}
