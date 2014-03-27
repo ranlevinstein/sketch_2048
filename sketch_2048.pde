@@ -9,7 +9,7 @@ textFont(createFont("Courier", 40));
 int start = millis();
 
 
->>>>>>> FETCH_HEAD
+
 while(!board.gameover()){
   
   board.minMaxMove();
