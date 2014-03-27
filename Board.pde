@@ -211,6 +211,18 @@ for (int i = 0; i < a.length; i++){
 return amount;
 }
 
+public float AverageOfArray(int [][] a){
+  int sum = 0;
+for (int i = 0; i < a.length; i++){
+  for (int j = 0; j < a[i].length; j++){
+    if (a[i][j] != 0){
+      sum += a[i][j];
+    }
+  }
+}
+return (sum/(16-amountOfZeroes(b)));
+}
+
 void minMaxMove(){
   int right = 0, left = 0, up = 0, down = 0;
 if (board.ableToMoveRight()){
@@ -224,20 +236,76 @@ if (board.ableToMoveUp()){
 }
 if (board.ableToMoveDown()){
   down = board.amountOfZeroes(board.getDown());
-}
+}/*
 if (Math.max(Math.max(right, left),Math.max(up, down)) == right &&
       Math.max(Math.max(right, left),Math.max(up, down)) == up){
-      if ((Math.random() < 0.5)){
-        board.right();
-        //println("right");
-        return;  
-      }else{
-        board.up();
-        //println("up");
-        return;
-      }
+      board.minMaxSumMove();
 
 }
+if (Math.max(Math.max(right, left),Math.max(up, down)) == right &&
+      Math.max(Math.max(right, left),Math.max(up, down)) == left){
+      board.minMaxSumMove();
+
+}
+if (Math.max(Math.max(right, left),Math.max(up, down)) == right &&
+      Math.max(Math.max(right, left),Math.max(up, down)) == down){
+      board.minMaxSumMove();
+
+}
+if (Math.max(Math.max(right, left),Math.max(up, down)) == left &&
+      Math.max(Math.max(right, left),Math.max(up, down)) == up){
+      board.minMaxSumMove();
+
+}
+if (Math.max(Math.max(right, left),Math.max(up, down)) == left &&
+      Math.max(Math.max(right, left),Math.max(up, down)) == down){
+      board.minMaxSumMove();
+
+}
+if (Math.max(Math.max(right, left),Math.max(up, down)) == down &&
+      Math.max(Math.max(right, left),Math.max(up, down)) == up){
+      board.minMaxSumMove();
+
+}
+
+*/
+if(Math.max(Math.max(right, left),Math.max(up, down)) == right){
+  board.right();
+  //println("right");
+  return;
+}
+if(Math.max(Math.max(right, left),Math.max(up, down)) == left){
+  board.left();
+  //println("left");
+  return;
+}
+if(Math.max(Math.max(right, left),Math.max(up, down)) == up){
+  board.up();
+  //println("up");
+  return;
+}
+if(Math.max(Math.max(right, left),Math.max(up, down)) == down){
+  board.down();
+  //println("down");
+  return;
+}
+}
+
+void minMaxSumMove(){
+  float right = 0, left = 0, up = 0, down = 0;
+if (board.ableToMoveRight()){
+  right = board.AverageOfArray(board.getRight());
+}
+if (board.ableToMoveLeft()){
+  left = board.AverageOfArray(board.getLeft());
+}
+if (board.ableToMoveUp()){
+  up = board.AverageOfArray(board.getUp());
+}
+if (board.ableToMoveDown()){
+  down = board.AverageOfArray(board.getDown());
+}
+
 if(Math.max(Math.max(right, left),Math.max(up, down)) == right){
   board.right();
   //println("right");
