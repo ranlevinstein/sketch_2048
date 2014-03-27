@@ -4,13 +4,15 @@ board = new Board();
 size(500, 500); //size(len, len);
 textFont(createFont("Courier", 40));
 ////////////////////////////////////////
-while(!board.gameover()){
+}
+
+void draw() {
+  
   board.minMaxMove();
+  int now = millis();
+  while((millis()- now) < 15){}
+  if(board.gameover()){
+  println("lost");
+  while(true){}
+  }
 }
-//board.minMaxMove();
-//board.minMaxMove();
-//board.minMaxMove();
-
-}
-
-
