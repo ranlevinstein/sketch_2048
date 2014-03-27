@@ -6,7 +6,7 @@ size(500, 550); //size(len, len);
 textFont(createFont("Courier", 40));
 ////////////////////////////////////////
 
-int start = millis();
+float start = millis();
 
 
 
