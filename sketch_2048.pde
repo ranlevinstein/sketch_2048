@@ -10,6 +10,7 @@ while(!board.gameover()){
   
   board.minMaxMove();
 }*/
+int start = millis();
 while(true){
 
 if(board.maxNum()<wantedNum)
@@ -30,5 +31,7 @@ println("Eureka!!");
 //board.minMaxMove();
 //board.minMaxMove();
 //board.minMaxMove();
-
+print("took ");
+print((millis()-start)/1000);
+print(" seconds.");
 }
