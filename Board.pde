@@ -1,4 +1,6 @@
 public class Board{
+ // PVector x = new PVector();
+ int kSideRank=7;//If you want major number on side more to have more power on ranking system make this higher
   protected int[][] b = new int[4][4];
   protected int pad = 20, bs = 100, len = pad*(b.length+1)+bs*b.length, score = 0, dead = 1;
   Board(){
@@ -41,6 +43,39 @@ public class Board{
     }
       return false;
   }
+  
+  
+  public PVector majorNumLoc(int c[][])
+  {
+    //int max = 0;
+    PVector vector = new PVector(0,0);
+   for(int i=0;i<c.length;i++)
+   {
+     for(int n=0;n<c.length;n++)
+     {
+       if(c[i][n]>c[(int)vector.x][(int)vector.y])
+       {
+         vector.x = i;
+         vector.y = n;
+         
+       }
+     }
+   }
+   return vector;
+  }
+  
+  
+  public int isMajorOnSide(int i[][])
+  {
+    PVector vector = majorNumLoc(i);
+    
+    if((vector.x==0&&vector.y==0)||(vector.x==3&&vector.y==3)||(vector.x==3&&vector.y==0)||(vector.x==0&&vector.y==3))
+      return 1;
+    else
+      return 0;
+    //Returning int and not boolean because then easier to perform math calculations on it
+  }
+  
   
   public boolean down(){
   int[][] newb = go(1, 0, true);
@@ -224,18 +259,22 @@ return (sum/(16-amountOfZeroes(b)));
 }
 
 void minMaxMove(){
-  int right = 0, left = 0, up = 0, down = 0;
+
+  int right = 0, left = 0, up = 0, down = 0;//This is the ranking system
+
+  
 if (ableToMoveRight()){
-  right = amountOfZeroes(getRight());
+  //sideRight=isMajorOnSide(getRight());
+  right = amountOfZeroes(getRight()) + isMajorOnSide(getRight())*kSideRank; //Adding isMajorOnSide as a factor to choose where to go...
 }
 if (ableToMoveLeft()){
-  left = amountOfZeroes(getLeft());
+  left = amountOfZeroes(getLeft()) + isMajorOnSide(getLeft())*kSideRank;
 }
 if (ableToMoveUp()){
-  up = amountOfZeroes(getUp());
+  up = amountOfZeroes(getUp()) + isMajorOnSide(getUp())*kSideRank;
 }
 if (ableToMoveDown()){
-  down = amountOfZeroes(getDown());
+  down = amountOfZeroes(getDown()) + isMajorOnSide(getDown())*kSideRank;
 }/*
 if (Math.max(Math.max(right, left),Math.max(up, down)) == right &&
       Math.max(Math.max(right, left),Math.max(up, down)) == up){
@@ -361,6 +400,7 @@ int right = 0, left = 0, up = 0, down = 0;
 
   down = amountOfZeroes(futureDown.getBoard());
  if(Math.max(Math.max(right, left),Math.max(up, down)) == right){
+   //if(majorNumLoc()
   right();
   //println("right");
   return;
