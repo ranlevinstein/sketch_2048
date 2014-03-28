@@ -1,6 +1,6 @@
 public class Board{
  // PVector x = new PVector();
- int kSideRank=7;//If you want major number on side more to have more power on ranking system make this higher
+ int kSideRank=10;//If you want major number on side more to have more power on ranking system make this higher
   protected int[][] b = new int[4][4];
   protected int pad = 20, bs = 100, len = pad*(b.length+1)+bs*b.length, score = 0, dead = 1;
   Board(){
@@ -206,6 +206,18 @@ void draw() {
       fill(200);
       rect(pad+(pad+bs)*i, pad+(pad+bs)*j, bs, bs, 5);
     }
+     fill(70);//Button's to control game
+rect(121,500,120,35,5);//Random
+fill(255);
+textSize(20);
+text("Random",121+120/2-37,524);
+fill(70);
+
+rect(121+120+20,500,120,35,5);//Manual
+fill(255);
+textSize(20);
+text("Manual",121+120+20+120/2-37,524);
+
     
   for (int j = 0 ; j < b.length; j++) 
     for (int i = 0 ; i < b[j].length; i++) {
