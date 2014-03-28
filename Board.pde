@@ -1,6 +1,7 @@
 public class Board{
  // PVector x = new PVector();
- int kSideRank=10;//If you want major number on side more to have more power on ranking system make this higher
+ int kSideRank=200;//If you want major number on side more to have more power on ranking system make this higher
+ int kAddableRank=1000;
   protected int[][] b = new int[4][4];
   protected int pad = 20, bs = 100, len = pad*(b.length+1)+bs*b.length, score = 0, dead = 1;
   Board(){
@@ -43,6 +44,31 @@ public class Board{
     }
       return false;
   }
+  
+  public int addable(int [][] a){
+    int amount = 0;
+    for(int j=1;j<a[0].length;j++){
+      if(a[0][j]==a[0][j-1] && a[0][j] != 0){
+         amount++;  
+    }
+    }
+    for(int i=1;i<a.length;i++)
+   {
+     for(int j=1;j<a[i].length;j++)
+     {
+       if(a[i][j]==a[i][j-1] && a[i][j] != 0){
+         amount++;
+       }
+       if(a[i][j]==a[i-1][j] && a[i][j] != 0){
+         amount++;
+       }
+       
+     }
+   }
+   return amount;
+  }
+
+  
   
   
   public PVector majorNumLoc(int c[][])
@@ -277,16 +303,16 @@ void minMaxMove(){
   
 if (ableToMoveRight()){
   //sideRight=isMajorOnSide(getRight());
-  right = amountOfZeroes(getRight()) + isMajorOnSide(getRight())*kSideRank; //Adding isMajorOnSide as a factor to choose where to go...
+  right = amountOfZeroes(getRight()) + isMajorOnSide(getRight())*kSideRank + addable(getRight())*kAddableRank; //Adding isMajorOnSide as a factor to choose where to go...
 }
 if (ableToMoveLeft()){
-  left = amountOfZeroes(getLeft()) + isMajorOnSide(getLeft())*kSideRank;
+  left = amountOfZeroes(getLeft()) + isMajorOnSide(getLeft())*kSideRank + addable(getLeft())*kAddableRank;
 }
 if (ableToMoveUp()){
-  up = amountOfZeroes(getUp()) + isMajorOnSide(getUp())*kSideRank;
+  up = amountOfZeroes(getUp()) + isMajorOnSide(getUp())*kSideRank + addable(getUp())*kAddableRank;
 }
 if (ableToMoveDown()){
-  down = amountOfZeroes(getDown()) + isMajorOnSide(getDown())*kSideRank;
+  down = amountOfZeroes(getDown()) + isMajorOnSide(getDown())*kSideRank + addable(getDown())*kAddableRank;
 }/*
 if (Math.max(Math.max(right, left),Math.max(up, down)) == right &&
       Math.max(Math.max(right, left),Math.max(up, down)) == up){
