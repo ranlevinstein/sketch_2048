@@ -1,7 +1,7 @@
 public class Board{
  // PVector x = new PVector();
  int kSideRank=200;//If you want major number on side more to have more power on ranking system make this higher
- int kAddableRank=1000;
+ int kAddableRank=55;
   protected int[][] b = new int[4][4];
   protected int pad = 20, bs = 100, len = pad*(b.length+1)+bs*b.length, score = 0, dead = 1;
   Board(){
