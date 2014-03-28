@@ -41,10 +41,9 @@ void randomBoard()
 board=new Board();
   
 start = millis();
-  while(true){
+  while(board.maxNum()<wantedNum){
 
-  if(board.maxNum()<wantedNum)
-  {
+ 
     board = new Board();
     while(!board.gameover()){
   
@@ -56,11 +55,8 @@ println("Max num in board: " + board.maxNum());
  
 
 
-  }
-  else
-   {
-     break;
-   }
+
+  
  }
 
 println("Eureka!!");
@@ -72,10 +68,3 @@ print((millis()-start)/1000);
 println(" seconds.");
 
 }
-
-
-
-
-
-
-
