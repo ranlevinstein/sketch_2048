@@ -34,10 +34,7 @@ void mouseClicked()
 void randomBoard()
 {
   
-  /*while(!board.gameover()){
-  
-    board.minMaxMove();
-  }*/
+
 board=new Board();
   
 start = millis();
@@ -60,9 +57,7 @@ println("Max num in board: " + board.maxNum());
  }
 
 println("Eureka!!");
-//board.minMaxMove();
-//board.minMaxMove();
-//board.minMaxMove();
+
 print("took ");
 print((millis()-start)/1000);
 println(" seconds.");
