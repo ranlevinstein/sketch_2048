@@ -1,5 +1,5 @@
 Board board;
-int wantedNum=512;
+int wantedNum=1024;
 float start = millis();
 void setup() {
 board = new Board();
@@ -9,7 +9,6 @@ textFont(createFont("Courier", 40));
 
 
 randomBoard();
-
 
 
 
@@ -49,12 +48,12 @@ start = millis();
     board = new Board();
     while(!board.gameover()){
   
-    board.future();
+    board.minMaxMove();
   }
 
-//println("Max num in board: " + board.maxNum());
+println("Max num in board: " + board.maxNum());
 
-  println("Max num in board: " + board.maxNum());
+ 
 
 
   }
